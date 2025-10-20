@@ -13,9 +13,12 @@ list
 умыться
 выгулять собаку
 сходить в магазин
+
 done // удалить из списка дел
 Введите номер дела: 1
 Выполнено. 
+
+
 list
 выгулять собаку
 сходить в магазин
@@ -48,7 +51,7 @@ int main()
 			std::getline(std::cin, delo);
 
 			business.push_back(delo);
-			std::cout << "Добавлено дело: - " << std::endl;
+			std::cout << "Дело добавлено." << std::endl;
 		}
 		else if(cod == "list")
 		{
@@ -56,6 +59,34 @@ int main()
 			{
 				std::cout << i + 1 << " " << business[i] << std::endl;
 			}
+		}
+		else if (cod == "delete")
+		{
+			std::cout << "Введите дело: - ";
+			std::string delo;
+			std::getline(std::cin, delo);
+
+			bool posk = false;
+
+			for (int i = 0; i < business.size(); i++)
+			{
+				if (business[i] == delo)
+				{
+					business[i].erase(+1);
+					std::cout << "Удаленно дело. " << business[i].erase() << std::endl;
+					posk = true;
+				}				
+			}				
+			
+			if (posk == false)
+			{
+				std::cout << "Такова дела нет." << std::endl;
+			}
+
+		}
+		else
+		{
+			std::cout << "Неверная команда!\n";
 		}
 	}
 
